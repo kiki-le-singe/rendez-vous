@@ -26,8 +26,8 @@ export default {
   dark: {
     text: grey,
     background: black,
-    cardBackground: grey,
-    border,
+    cardBackground: darkGrey,
+    border: darkGreen,
     green,
     blue,
     darkBlue,
