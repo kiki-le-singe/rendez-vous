@@ -1,7 +1,7 @@
 import Svg, { Path } from "react-native-svg";
 import Colors from "../../../../constants/Colors";
 
-export default function BackArrow() {
+export default function BackArrowIcon() {
   return (
     <Svg width="14" height="14" viewBox="0 0 14 14" fill="none">
       <Path

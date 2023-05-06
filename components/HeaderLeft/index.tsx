@@ -2,7 +2,7 @@ import { StyleSheet, TouchableOpacity, Text, View } from "react-native";
 import { useNavigation } from "expo-router";
 
 import Colors from "../../constants/Colors";
-import BackArrow from "../../assets/svg/js/BackArrow";
+import BackArrowIcon from "../../assets/svg/js/BackArrowIcon";
 
 export default function HeaderLeft() {
   const navigation = useNavigation();
@@ -13,7 +13,7 @@ export default function HeaderLeft() {
 
   return (
     <TouchableOpacity style={styles.container} onPress={handlePress}>
-      <BackArrow />
+      <BackArrowIcon />
     </TouchableOpacity>
   );
 }
