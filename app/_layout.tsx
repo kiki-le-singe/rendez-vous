@@ -12,6 +12,7 @@ import { useColorScheme } from "react-native";
 import Colors from "../constants/Colors";
 import { useThemeColor } from "../components/Themed";
 import HeaderLeft from "../components/HeaderLeft";
+import HeaderRight from "../components/HeaderRight";
 
 export {
   // Catch any errors thrown by the Layout component.
@@ -68,6 +69,7 @@ function RootLayoutNav() {
               },
               headerTitleStyle: { color },
               headerLeft: () => <HeaderLeft />,
+              headerRight: () => <HeaderRight />,
               title: "Rendez-vous",
             }}
           />
