@@ -73,7 +73,13 @@ function RootLayoutNav() {
               title: "Rendez-vous",
             }}
           />
-          <Stack.Screen name="modal" options={{ presentation: "modal" }} />
+          <Stack.Screen
+            name="modals/modalSelectClient"
+            options={{
+              headerShown: false,
+              presentation: "modal",
+            }}
+          />
         </Stack>
       </ThemeProvider>
     </>
