@@ -11,6 +11,7 @@ import InputContainer from "../InputContainer";
 export default function ClientInput({
   editable = true,
   onChangeText,
+  rightElement = null,
 }: ClientInputProps) {
   const [_text, _onChangeText] = React.useState("");
   const navigation = useNavigation();
@@ -57,6 +58,7 @@ export default function ClientInput({
           editable={editable}
           pointerEvents={editable ? undefined : "none"}
         />
+        {rightElement}
       </InputContainer>
     );
 

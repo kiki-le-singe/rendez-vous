@@ -11,6 +11,7 @@ import Card from "../../components/Card";
 import { clientState, getFilteredClients } from "../../atoms/Clients";
 import { Client } from "../../atoms/Clients/types";
 import Colors from "../../constants/Colors";
+import Button from "../../components/Button";
 
 export default function ModalSelectClientScreen() {
   const data = useRecoilValue(clientState);
@@ -57,7 +58,16 @@ export default function ModalSelectClientScreen() {
     <View style={styles.container}>
       <View style={[styles.inputContainer, { borderColor }]}>
         <View style={styles.inputContent}>
-          <ClientInput onChangeText={handleChangeText} />
+          <ClientInput
+            onChangeText={handleChangeText}
+            rightElement={
+              <Button
+                label="Créer"
+                theme="green"
+                onPress={() => alert("Créer")}
+              />
+            }
+          />
         </View>
       </View>
 
