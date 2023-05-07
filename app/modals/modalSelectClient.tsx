@@ -4,7 +4,7 @@ import { Platform, StyleSheet, TouchableOpacity } from "react-native";
 import { FlashList } from "@shopify/flash-list";
 import { useRecoilValue } from "recoil";
 
-import { View, Text } from "../../components/Themed";
+import { View, Text, useThemeColor } from "../../components/Themed";
 import ClientInput from "../../components/ClientInput";
 import Card from "../../components/Card";
 
@@ -15,6 +15,11 @@ import Colors from "../../constants/Colors";
 export default function ModalSelectClientScreen() {
   const data = useRecoilValue(clientState);
   const [clients, setClients] = React.useState<Client[]>([]);
+  const borderColor = useThemeColor(
+    { light: Colors.light.border, dark: Colors.dark.border },
+    "text"
+  );
+
   const dataLength = data.length;
 
   function handlePress(item: Client) {
@@ -50,14 +55,17 @@ export default function ModalSelectClientScreen() {
 
   return (
     <View style={styles.container}>
-      <View style={styles.inputContainer}>
-        <ClientInput onChangeText={handleChangeText} />
+      <View style={[styles.inputContainer, { borderColor }]}>
+        <View style={styles.inputContent}>
+          <ClientInput onChangeText={handleChangeText} />
+        </View>
       </View>
 
       <FlashList
         data={clients}
         renderItem={renderItem}
         estimatedItemSize={59}
+        contentContainerStyle={styles.contentContainerStyle}
       />
 
       {/* Use a light status bar on iOS to account for the black space above the modal */}
@@ -70,12 +78,19 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     paddingTop: 20,
-    paddingHorizontal: 12,
   },
   inputContainer: {
-    paddingBottom: 20,
+    paddingBottom: 16,
+    borderBottomWidth: 1,
+  },
+  inputContent: {
+    paddingHorizontal: 12,
   },
   cardContainer: {
     marginBottom: 16,
+  },
+  contentContainerStyle: {
+    paddingTop: 20,
+    paddingHorizontal: 12,
   },
 });
