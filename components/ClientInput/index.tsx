@@ -1,5 +1,5 @@
 import React from "react";
-import { StyleSheet, TextInput, TouchableOpacity, View } from "react-native";
+import { StyleSheet, TextInput, TouchableOpacity } from "react-native";
 import { useNavigation } from "expo-router";
 
 import Colors from "../../constants/Colors";
