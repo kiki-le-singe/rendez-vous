@@ -10,6 +10,7 @@ import {
 } from "react-native";
 
 import Colors from "../../constants/Colors";
+import { ViewProps, TextProps } from "./types";
 
 export function useThemeColor(
   props: { light?: string; dark?: string },
@@ -29,9 +30,6 @@ type ThemeProps = {
   lightColor?: string;
   darkColor?: string;
 };
-
-export type TextProps = ThemeProps & DefaultText["props"];
-export type ViewProps = ThemeProps & DefaultView["props"];
 
 export function Text(props: TextProps) {
   const { style, lightColor, darkColor, ...otherProps } = props;

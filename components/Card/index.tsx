@@ -3,8 +3,7 @@ import { StyleSheet } from "react-native";
 
 import Colors from "../../constants/Colors";
 import { View, useThemeColor } from "../Themed";
-
-export type CardProps = React.PropsWithChildren<{}>;
+import { CardProps } from "./types";
 
 export default function Card(props: CardProps) {
   const borderColor = useThemeColor(
