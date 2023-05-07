@@ -23,7 +23,7 @@ export default function ModalSelectClientScreen() {
 
   function handleChangeText(searchString: string) {
     if (searchString) {
-      const result = getFilteredClients(clients, searchString);
+      const result = getFilteredClients(data, searchString);
       setClients(result);
     } else {
       setClients(data);
