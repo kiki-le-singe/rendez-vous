@@ -1,5 +1,6 @@
 import React from "react";
 import { StyleSheet, Text, TouchableOpacity } from "react-native";
+import Animated from "react-native-reanimated";
 
 import { ButtonProps, TStyles } from "./types";
 import Colors from "../../constants/Colors";
@@ -8,15 +9,15 @@ export default function Button({
   label,
   theme = "light",
   onPress = () => {},
+  animatedStyle = {},
 }: ButtonProps) {
   const labelTheme = theme === "light" ? "lightLabel" : "label";
 
   return (
-    <TouchableOpacity
-      onPress={onPress}
-      style={[styles.container, styles[theme]]}
-    >
-      <Text style={styles[labelTheme]}>{label}</Text>
+    <TouchableOpacity onPress={onPress}>
+      <Animated.View style={[styles.container, styles[theme], animatedStyle]}>
+        <Text style={styles[labelTheme]}>{label}</Text>
+      </Animated.View>
     </TouchableOpacity>
   );
 }

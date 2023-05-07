@@ -3,6 +3,11 @@ import { StatusBar } from "expo-status-bar";
 import { Platform, StyleSheet, TouchableOpacity } from "react-native";
 import { FlashList } from "@shopify/flash-list";
 import { useRecoilValue } from "recoil";
+import Animated, {
+  useSharedValue,
+  useAnimatedStyle,
+  withTiming,
+} from "react-native-reanimated";
 
 import { View, Text, useThemeColor } from "../../components/Themed";
 import ClientInput from "../../components/ClientInput";
@@ -16,12 +21,35 @@ import Button from "../../components/Button";
 export default function ModalSelectClientScreen() {
   const data = useRecoilValue(clientState);
   const [clients, setClients] = React.useState<Client[]>([]);
+  const [isCreateMode, setIsCreateMode] = React.useState(false);
   const borderColor = useThemeColor(
     { light: Colors.light.border, dark: Colors.dark.border },
     "text"
   );
 
   const dataLength = data.length;
+
+  const opacity = useSharedValue(0);
+  const scale = useSharedValue(0);
+  const buttonStyle = useAnimatedStyle(() => {
+    return {
+      opacity: withTiming(opacity.value, { duration: 400 }),
+      transform: [{ scale: withTiming(scale.value, { duration: 400 }) }],
+    };
+  });
+
+  const buttonProps = isCreateMode
+    ? {
+        rightElement: (
+          <Button
+            label="Créer"
+            theme="green"
+            onPress={() => alert("Créer")}
+            animatedStyle={buttonStyle}
+          />
+        ),
+      }
+    : {};
 
   function handlePress(item: Client) {
     alert(`Selected Client ${item.email}`);
@@ -31,6 +59,8 @@ export default function ModalSelectClientScreen() {
     if (searchString) {
       const result = getFilteredClients(data, searchString);
       setClients(result);
+
+      !result.length ? setIsCreateMode(true) : setIsCreateMode(false);
     } else {
       setClients(data);
     }
@@ -54,20 +84,22 @@ export default function ModalSelectClientScreen() {
     }
   }, [dataLength, data]);
 
+  // Start animation when the component is mounted
+  React.useEffect(() => {
+    if (isCreateMode) {
+      opacity.value = 1;
+      scale.value = 1;
+    } else {
+      opacity.value = 0;
+      scale.value = 0;
+    }
+  }, [isCreateMode, opacity, scale]);
+
   return (
     <View style={styles.container}>
       <View style={[styles.inputContainer, { borderColor }]}>
         <View style={styles.inputContent}>
-          <ClientInput
-            onChangeText={handleChangeText}
-            rightElement={
-              <Button
-                label="Créer"
-                theme="green"
-                onPress={() => alert("Créer")}
-              />
-            }
-          />
+          <ClientInput onChangeText={handleChangeText} {...buttonProps} />
         </View>
       </View>
 

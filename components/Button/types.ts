@@ -8,4 +8,5 @@ export type ButtonProps = {
   label: string;
   theme: themeValues;
   onPress?: () => void;
+  animatedStyle?: {};
 };
