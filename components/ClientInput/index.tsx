@@ -4,14 +4,19 @@ import { useNavigation } from "expo-router";
 
 import Colors from "../../constants/Colors";
 import { useThemeColor } from "../Themed";
+import { ClientInputProps } from "./types";
 
-type ClientInputProps = {
-  editable?: boolean;
-};
-
-export default function ClientInput({ editable = true }: ClientInputProps) {
-  const [text, onChangeText] = React.useState("");
+export default function ClientInput({
+  editable = true,
+  onChangeText,
+}: ClientInputProps) {
+  const [_text, _onChangeText] = React.useState("");
   const navigation = useNavigation();
+
+  function handleChangeText(text: string) {
+    onChangeText && onChangeText(text);
+    _onChangeText(text);
+  }
 
   const backgroundColor = useThemeColor(
     { light: Colors.light.white, dark: Colors.dark.darkGreen },
@@ -25,8 +30,7 @@ export default function ClientInput({ editable = true }: ClientInputProps) {
     { light: Colors.light.text, dark: Colors.dark.text },
     "text"
   );
-
-  const fontSize = text ? 13 : 12;
+  const fontSize = _text ? 13 : 12;
 
   function handlePress() {
     // @TODO: find a better way to fix this TS error
@@ -41,8 +45,8 @@ export default function ClientInput({ editable = true }: ClientInputProps) {
           styles.input,
           { backgroundColor, borderColor, color, fontSize },
         ]}
-        onChangeText={onChangeText}
-        value={text}
+        onChangeText={handleChangeText}
+        value={_text}
         placeholder="Choisir un client"
         placeholderTextColor={Colors.light.placeholder}
         autoCorrect={false}

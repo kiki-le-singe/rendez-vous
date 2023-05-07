@@ -1,13 +1,24 @@
 import { atom } from "recoil";
 
-import data from "../../api/clients.json";
-import { Clients } from "./types";
+import clients from "../../api/clients.json";
+import { Client } from "./types";
 
-const defaultValue: Clients = data;
+const defaultValue: Client[] = clients.data;
 
 const clientState = atom({
   key: "clientState",
   default: defaultValue,
 });
 
-export { clientState };
+const getFilteredClients = (
+  clients: Client[],
+  searchString: string
+): Client[] => {
+  return clients.filter(
+    (client) =>
+      client.firstName.includes(searchString) ||
+      client.lastName.includes(searchString)
+  );
+};
+
+export { clientState, getFilteredClients };
