@@ -1,7 +1,9 @@
 import { StyleSheet } from "react-native";
 
-import { Text, View } from "../components/Themed";
+import { View } from "../components/Themed";
 import Colors from "../constants/Colors";
+import Card from "../components/Card";
+import ClientInput from "../components/ClientInput";
 
 export default function RendezVousScreen() {
   return (
@@ -10,9 +12,9 @@ export default function RendezVousScreen() {
       lightColor={Colors.light.background}
       darkColor={Colors.dark.background}
     >
-      <Text lightColor={Colors.light.text} darkColor={Colors.dark.text}>
-        Rendez-vous
-      </Text>
+      <Card>
+        <ClientInput editable={false} />
+      </Card>
     </View>
   );
 }
@@ -20,7 +22,8 @@ export default function RendezVousScreen() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    alignItems: "center",
-    justifyContent: "center",
+    paddingHorizontal: 12,
+    paddingTop: 20,
+    gap: 16,
   },
 });

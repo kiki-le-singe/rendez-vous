@@ -8,6 +8,7 @@ const red = "#F56565";
 const border = "#ECEEED";
 const black = "#000000";
 const darkGrey = "#1D1D1F";
+const placeholder = "#7F8C88";
 
 export default {
   light: {
@@ -22,6 +23,7 @@ export default {
     darkGreen,
     white,
     darkGrey,
+    placeholder,
   },
   dark: {
     text: grey,
@@ -35,5 +37,6 @@ export default {
     darkGreen,
     white,
     darkGrey,
+    placeholder,
   },
 };
