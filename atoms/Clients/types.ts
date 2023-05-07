@@ -17,7 +17,3 @@ export type Client = {
   isMarketing: boolean;
   info: string;
 };
-
-export type Clients = {
-  data: Client[];
-};
