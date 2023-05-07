@@ -51,9 +51,9 @@ const styles = StyleSheet.create({
     paddingHorizontal: 12,
   },
   inputContainer: {
-    marginBottom: 16,
+    paddingBottom: 20,
   },
   cardContainer: {
-    marginBottom: 20,
+    marginBottom: 16,
   },
 });
