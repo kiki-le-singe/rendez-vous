@@ -1,1 +1,3 @@
-export type CardProps = React.PropsWithChildren<{}>;
+export type CardProps = React.PropsWithChildren<{
+  stylesContainer?: object;
+}>;

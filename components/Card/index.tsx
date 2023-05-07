@@ -5,7 +5,7 @@ import Colors from "../../constants/Colors";
 import { View, useThemeColor } from "../Themed";
 import { CardProps } from "./types";
 
-export default function Card(props: CardProps) {
+export default function Card({ children, stylesContainer = {} }: CardProps) {
   const borderColor = useThemeColor(
     { light: Colors.light.border, dark: Colors.dark.border },
     "text"
@@ -15,9 +15,9 @@ export default function Card(props: CardProps) {
     <View
       lightColor={Colors.light.cardBackground}
       darkColor={Colors.dark.cardBackground}
-      style={[styles.container, { borderColor }]}
+      style={[styles.container, { borderColor, ...stylesContainer }]}
     >
-      {props.children}
+      {children}
     </View>
   );
 }

@@ -8,6 +8,7 @@ import { useFonts } from "expo-font";
 import { SplashScreen, Stack } from "expo-router";
 import { useEffect } from "react";
 import { useColorScheme } from "react-native";
+import { RecoilRoot } from "recoil";
 
 import Colors from "../constants/Colors";
 import { useThemeColor } from "../components/Themed";
@@ -56,7 +57,7 @@ function RootLayoutNav() {
   );
 
   return (
-    <>
+    <RecoilRoot>
       <ThemeProvider value={colorScheme === "dark" ? DarkTheme : DefaultTheme}>
         <Stack>
           <Stack.Screen name="index" options={{ headerShown: false }} />
@@ -82,6 +83,6 @@ function RootLayoutNav() {
           />
         </Stack>
       </ThemeProvider>
-    </>
+    </RecoilRoot>
   );
 }
