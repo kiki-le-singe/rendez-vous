@@ -1,10 +1,12 @@
 import React from "react";
-import { StyleSheet, TextInput, TouchableOpacity } from "react-native";
+import { StyleSheet, TextInput, TouchableOpacity, View } from "react-native";
 import { useNavigation } from "expo-router";
 
 import Colors from "../../constants/Colors";
 import { useThemeColor } from "../Themed";
 import { ClientInputProps } from "./types";
+import ClientIcon from "../../assets/svg/js/ClientIcon";
+import InputContainer from "../InputContainer";
 
 export default function ClientInput({
   editable = true,
@@ -40,19 +42,22 @@ export default function ClientInput({
 
   function renderTextInput() {
     const textInput = (
-      <TextInput
-        style={[
-          styles.input,
-          { backgroundColor, borderColor, color, fontSize },
-        ]}
-        onChangeText={handleChangeText}
-        value={_text}
-        placeholder="Choisir un client"
-        placeholderTextColor={Colors.light.placeholder}
-        autoCorrect={false}
-        editable={editable}
-        pointerEvents={editable ? undefined : "none"}
-      />
+      <InputContainer>
+        <ClientIcon />
+        <TextInput
+          style={[
+            styles.input,
+            { backgroundColor, borderColor, color, fontSize },
+          ]}
+          onChangeText={handleChangeText}
+          value={_text}
+          placeholder="Choisir un client"
+          placeholderTextColor={Colors.light.placeholder}
+          autoCorrect={false}
+          editable={editable}
+          pointerEvents={editable ? undefined : "none"}
+        />
+      </InputContainer>
     );
 
     if (editable) {
@@ -69,6 +74,7 @@ export default function ClientInput({
 
 const styles = StyleSheet.create({
   input: {
+    flex: 1,
     height: 48,
     paddingHorizontal: 12,
     paddingVertical: 16,
