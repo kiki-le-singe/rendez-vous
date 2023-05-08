@@ -31,12 +31,10 @@ export default function ModalSelectClientScreen() {
 
   const opacity = useSharedValue(0);
   const scale = useSharedValue(0);
-  const buttonStyle = useAnimatedStyle(() => {
-    return {
-      opacity: withTiming(opacity.value, { duration: 400 }),
-      transform: [{ scale: withTiming(scale.value, { duration: 400 }) }],
-    };
-  });
+  const buttonStyle = useAnimatedStyle(() => ({
+    opacity: withTiming(opacity.value, { duration: 400 }),
+    transform: [{ scale: withTiming(scale.value, { duration: 400 }) }],
+  }));
 
   const buttonProps = isCreateMode
     ? {
