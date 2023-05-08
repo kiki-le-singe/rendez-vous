@@ -1,9 +1,9 @@
 import { StyleSheet } from "react-native";
 
-import { View } from "../components/Themed";
-import Colors from "../constants/Colors";
-import Card from "../components/Card";
-import ClientInput from "../components/ClientInput";
+import { View } from "../../components/Themed";
+import Card from "../../components/Card";
+import ClientInput from "../../components/ClientInput";
+import Colors from "../../constants/Colors";
 
 export default function RendezVousScreen() {
   return (

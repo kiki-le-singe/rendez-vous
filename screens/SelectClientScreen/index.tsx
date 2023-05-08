@@ -3,7 +3,7 @@ import { StatusBar } from "expo-status-bar";
 import { Platform, StyleSheet, TouchableOpacity } from "react-native";
 import { FlashList } from "@shopify/flash-list";
 import { useRecoilValue } from "recoil";
-import Animated, {
+import {
   useSharedValue,
   useAnimatedStyle,
   withTiming,
@@ -17,8 +17,11 @@ import { clientState, getFilteredClients } from "../../atoms/Clients";
 import { Client } from "../../atoms/Clients/types";
 import Colors from "../../constants/Colors";
 import Button from "../../components/Button";
+import { SelectClientScreenProps } from "../../routes/types";
 
-export default function ModalSelectClientScreen() {
+export default function ModalSelectClientScreen({
+  navigation,
+}: SelectClientScreenProps) {
   const data = useRecoilValue(clientState);
   const [clients, setClients] = React.useState<Client[]>([]);
   const [isCreateMode, setIsCreateMode] = React.useState(false);
@@ -42,14 +45,21 @@ export default function ModalSelectClientScreen() {
           <Button
             label="Créer"
             theme="green"
-            onPress={() => alert("Créer")}
+            onPress={handleCreateUser}
             animatedStyle={buttonStyle}
           />
         ),
       }
     : {};
 
+  function handleCreateUser() {
+    // @TODO: find a better way to fix this TS error
+    // @See: https://stackoverflow.com/questions/68667766/react-native-typescript-string-is-not-assignable-to-parameter-of-type-never
+    // navigation.navigate("modals/modalUserEdit");
+  }
+
   function handlePress(item: Client) {
+    // @TODO: update Client state with selected client
     alert(`Selected Client ${item.email}`);
   }
 

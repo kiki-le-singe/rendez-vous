@@ -1,5 +1,5 @@
 import { StyleSheet, TouchableOpacity } from "react-native";
-import { useNavigation } from "expo-router";
+import { useNavigation } from "@react-navigation/native";
 
 import Colors from "../../constants/Colors";
 import BackArrowIcon from "../../assets/svg/js/BackArrowIcon";

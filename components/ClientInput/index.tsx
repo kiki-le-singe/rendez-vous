@@ -1,12 +1,14 @@
 import React from "react";
 import { StyleSheet, TextInput, TouchableOpacity } from "react-native";
-import { useNavigation } from "expo-router";
+import { useNavigation } from "@react-navigation/native";
+import { NativeStackNavigationProp } from "@react-navigation/native-stack";
 
 import Colors from "../../constants/Colors";
 import { useThemeColor } from "../Themed";
 import { ClientInputProps } from "./types";
 import ClientIcon from "../../assets/svg/js/ClientIcon";
 import InputContainer from "../InputContainer";
+import { RootStackParamList } from "../../routes/types";
 
 export default function ClientInput({
   editable = true,
@@ -14,7 +16,8 @@ export default function ClientInput({
   rightElement = null,
 }: ClientInputProps) {
   const [_text, _onChangeText] = React.useState("");
-  const navigation = useNavigation();
+  const navigation =
+    useNavigation<NativeStackNavigationProp<RootStackParamList>>();
 
   function handleChangeText(text: string) {
     onChangeText && onChangeText(text);
@@ -36,9 +39,7 @@ export default function ClientInput({
   const fontSize = _text ? 13 : 12;
 
   function handlePress() {
-    // @TODO: find a better way to fix this TS error
-    // @See: https://stackoverflow.com/questions/68667766/react-native-typescript-string-is-not-assignable-to-parameter-of-type-never
-    navigation.navigate("modals/modalSelectClient" as never);
+    navigation.navigate("SelectClient");
   }
 
   function renderTextInput() {
