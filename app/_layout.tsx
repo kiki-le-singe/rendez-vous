@@ -22,7 +22,7 @@ export {
 
 export const unstable_settings = {
   // Ensure that reloading on `/modal` keeps a back button present.
-  initialRouteName: "home",
+  initialRouteName: "index",
 };
 
 export default function RootLayout() {
@@ -59,7 +59,7 @@ function RootLayoutNav() {
   return (
     <RecoilRoot>
       <ThemeProvider value={colorScheme === "dark" ? DarkTheme : DefaultTheme}>
-        <Stack>
+        <Stack initialRouteName="index">
           <Stack.Screen name="index" options={{ headerShown: false }} />
           <Stack.Screen
             name="rendezVous"
