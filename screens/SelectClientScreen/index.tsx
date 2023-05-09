@@ -18,6 +18,7 @@ import { Client } from "../../atoms/Clients/types";
 import Colors from "../../constants/Colors";
 import Button from "../../components/Button";
 import { SelectClientScreenProps } from "../../routes/types";
+import { ScreenClientMode } from "../CreateEditClientScreen/types";
 
 export default function ModalSelectClientScreen({
   navigation,
@@ -43,7 +44,7 @@ export default function ModalSelectClientScreen({
     ? {
         rightElement: (
           <Button
-            label="Créer"
+            label="Create"
             theme="green"
             onPress={handleCreateUser}
             animatedStyle={buttonStyle}
@@ -53,9 +54,9 @@ export default function ModalSelectClientScreen({
     : {};
 
   function handleCreateUser() {
-    // @TODO: find a better way to fix this TS error
-    // @See: https://stackoverflow.com/questions/68667766/react-native-typescript-string-is-not-assignable-to-parameter-of-type-never
-    // navigation.navigate("modals/modalUserEdit");
+    navigation.navigate("CreateEditClient", {
+      screenMode: ScreenClientMode.CREATE,
+    });
   }
 
   function handlePress(item: Client) {

@@ -1,37 +1,42 @@
-import { NativeStackScreenProps } from "@react-navigation/native-stack";
+import { RouteProp } from "@react-navigation/native";
+import { NativeStackNavigationProp } from "@react-navigation/native-stack";
+import { ScreenClientMode } from "../screens/CreateEditClientScreen/types";
 
-// type TStoryParams = {
-//   story?: string | undefined;
-// };
 
 export type RootStackParamList = {
   Home: object | undefined;
   RendezVous: object | undefined;
-  // Story: TStoryParams | undefined;
   SelectClient: object | undefined;
 };
 
-export type HomeScreenProps = NativeStackScreenProps<
+  RootStackParamList,
+>;
+
+// Define the types for navigation prop
+type HomeScreenNavigationProp = NativeStackNavigationProp<
   RootStackParamList,
   "Home"
 >;
-
-export type RendezVousScreenProps = NativeStackScreenProps<
+type RendezVousScreenNavigationProp = NativeStackNavigationProp<
   RootStackParamList,
   "RendezVous"
 >;
-
-export type SelectClientScreenProps = NativeStackScreenProps<
+type SelectClientScreenNavigationProp = NativeStackNavigationProp<
   RootStackParamList,
   "SelectClient"
 >;
+// Define the props for HomeScreen component
+export type HomeScreenProps = {
+  navigation: HomeScreenNavigationProp;
+};
 
-// export type StoryScreenProps = NativeStackScreenProps<
-//   RootStackParamList,
-//   "Story"
-// >;
+// Define the props for RendezVousScreen component
+export type RendezVousScreenProps = {
+  navigation: RendezVousScreenNavigationProp;
+};
 
-// export type SettingsScreenProps = NativeStackScreenProps<
-//   RootStackParamList,
-//   "Settings"
-// >;
+// Define the props for SelectClient component
+export type SelectClientScreenProps = {
+  navigation: SelectClientScreenNavigationProp;
+};
+
