@@ -1,11 +1,13 @@
 import React from "react";
 import { StyleSheet, Text, TouchableOpacity } from "react-native";
 
+import { UnderlineTextProps } from "./types";
+
 export default function UnderlineText({
   icon = null,
   onPress = () => {},
   disabled = true,
-}) {
+}: UnderlineTextProps) {
   function handlePress() {
     onPress();
   }
