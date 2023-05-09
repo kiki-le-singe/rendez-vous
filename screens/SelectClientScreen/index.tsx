@@ -24,7 +24,6 @@ import Colors from "../../constants/Colors";
 import Button from "../../components/Button";
 import { SelectClientScreenProps } from "../../routes/types";
 import { ScreenClientMode } from "../CreateEditClientScreen/types";
-import HeaderLeft from "../../components/HeaderLeft";
 import BinIcon from "../../assets/svg/js/BinIcon";
 import Icon from "../../components/Icon";
 
@@ -72,6 +71,11 @@ export default function ModalSelectClientScreen({
     alert(`Selected Client ${item.email}`);
   }
 
+  function handleRemoveClient(item: Client) {
+    const result = clients.filter((client) => client.id !== item.id);
+    setClients(result);
+  }
+
   function handleChangeText(searchString: string) {
     if (searchString) {
       const result = getFilteredClients(data, searchString);
@@ -93,7 +97,7 @@ export default function ModalSelectClientScreen({
 
           <RNView style={styles.actionsContainer}>
             <Button label="Edit" theme="darkBlue" />
-            <Icon>
+            <Icon onPress={() => handleRemoveClient(item)}>
               <BinIcon />
             </Icon>
           </RNView>

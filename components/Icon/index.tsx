@@ -3,9 +3,11 @@ import { StyleSheet, TouchableOpacity } from "react-native";
 import Colors from "../../constants/Colors";
 import { IconProps } from "./types";
 
-export default function Icon({ children }: IconProps) {
+export default function Icon({ children, onPress }: IconProps) {
   return !children ? null : (
-    <TouchableOpacity style={styles.container}>{children}</TouchableOpacity>
+    <TouchableOpacity onPress={onPress} style={styles.container}>
+      {children}
+    </TouchableOpacity>
   );
 }
 

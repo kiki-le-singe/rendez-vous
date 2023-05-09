@@ -1,1 +1,3 @@
-export type IconProps = React.PropsWithChildren<{}>;
+export type IconProps = React.PropsWithChildren<{
+  onPress?: () => void;
+}>;
