@@ -1,6 +1,11 @@
 import React from "react";
 import { StatusBar } from "expo-status-bar";
-import { Platform, StyleSheet, TouchableOpacity } from "react-native";
+import {
+  Platform,
+  StyleSheet,
+  TouchableOpacity,
+  View as RNView,
+} from "react-native";
 import { FlashList } from "@shopify/flash-list";
 import { useRecoilValue } from "recoil";
 import {
@@ -19,6 +24,9 @@ import Colors from "../../constants/Colors";
 import Button from "../../components/Button";
 import { SelectClientScreenProps } from "../../routes/types";
 import { ScreenClientMode } from "../CreateEditClientScreen/types";
+import HeaderLeft from "../../components/HeaderLeft";
+import BinIcon from "../../assets/svg/js/BinIcon";
+import Icon from "../../components/Icon";
 
 export default function ModalSelectClientScreen({
   navigation,
@@ -82,6 +90,13 @@ export default function ModalSelectClientScreen({
           <Text lightColor={Colors.light.text} darkColor={Colors.dark.text}>
             {item.firstName} {item.lastName}
           </Text>
+
+          <RNView style={styles.actionsContainer}>
+            <Button label="Edit" theme="darkBlue" />
+            <Icon>
+              <BinIcon />
+            </Icon>
+          </RNView>
         </Card>
       </TouchableOpacity>
     );
@@ -138,10 +153,18 @@ const styles = StyleSheet.create({
     paddingHorizontal: 12,
   },
   cardContainer: {
+    flexDirection: "row",
+    justifyContent: "space-between",
+    alignItems: "center",
     marginBottom: 16,
   },
   contentContainerStyle: {
     paddingTop: 20,
     paddingHorizontal: 12,
+  },
+  actionsContainer: {
+    flexDirection: "row",
+    alignItems: "center",
+    gap: 10,
   },
 });
