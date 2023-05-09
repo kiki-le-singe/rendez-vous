@@ -63,7 +63,7 @@ export default function ModalSelectClientScreen({
   }
 
   function handleRemoveClient(item: Client) {
-    Alert.alert("Warning", "Remove client", [
+    Alert.alert("Remove client", `${item.firstName} ${item.lastName}`, [
       {
         text: "Cancel",
         onPress: () => console.log("Cancel Pressed"),
