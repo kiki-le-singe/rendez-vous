@@ -5,6 +5,7 @@ import {
   StyleSheet,
   TouchableOpacity,
   View as RNView,
+  Alert,
 } from "react-native";
 import { FlashList } from "@shopify/flash-list";
 import { useRecoilValue } from "recoil";
@@ -72,8 +73,20 @@ export default function ModalSelectClientScreen({
   }
 
   function handleRemoveClient(item: Client) {
-    const result = clients.filter((client) => client.id !== item.id);
-    setClients(result);
+    Alert.alert("Warning", "Remove client", [
+      {
+        text: "Cancel",
+        onPress: () => console.log("Cancel Pressed"),
+        style: "cancel",
+      },
+      {
+        text: "OK",
+        onPress: () => {
+          const result = clients.filter((client) => client.id !== item.id);
+          setClients(result);
+        },
+      },
+    ]);
   }
 
   function handleChangeText(searchString: string) {
