@@ -3,6 +3,7 @@ import { StyleSheet, Text, TouchableOpacity, View } from "react-native";
 
 import Colors from "../../constants/Colors";
 import InfosIcon from "../../assets/svg/js/InfosIcon";
+import UnderlineText from "../UnderlineText";
 
 export default function ClientInfos() {
   const [isExpanded, setIsExpanded] = React.useState(false);
@@ -11,14 +12,9 @@ export default function ClientInfos() {
     setIsExpanded(!isExpanded);
   }
 
-  //   function renderTitle() {
-  //     setIsExpanded(!isExpanded);
-  //   }
-
   return (
     <TouchableOpacity onPress={onPress} style={styles.container}>
-      <InfosIcon />
-      {!isExpanded && <Text style={styles.title}>Info Client</Text>}
+      {!isExpanded ? <UnderlineText icon={<InfosIcon />} /> : <InfosIcon />}
 
       {isExpanded && (
         <View style={styles.boxInfos}>
