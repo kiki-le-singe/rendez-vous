@@ -1,12 +1,6 @@
 import React from "react";
 import { StatusBar } from "expo-status-bar";
-import {
-  Platform,
-  StyleSheet,
-  TouchableOpacity,
-  View as RNView,
-  Alert,
-} from "react-native";
+import { Platform, StyleSheet, View as RNView, Alert } from "react-native";
 import { FlashList } from "@shopify/flash-list";
 import { useRecoilValue } from "recoil";
 import {
@@ -27,6 +21,7 @@ import { SelectClientScreenProps } from "../../routes/types";
 import { ScreenClientMode } from "../CreateEditClientScreen/types";
 import BinIcon from "../../assets/svg/js/BinIcon";
 import Icon from "../../components/Icon";
+import ClientInfos from "../../components/ClientInfos";
 
 export default function ModalSelectClientScreen({
   navigation,
@@ -67,11 +62,6 @@ export default function ModalSelectClientScreen({
     });
   }
 
-  function handlePress(item: Client) {
-    // @TODO: update Client state with selected client
-    alert(`Selected Client ${item.email}`);
-  }
-
   function handleRemoveClient(item: Client) {
     Alert.alert("Warning", "Remove client", [
       {
@@ -102,8 +92,8 @@ export default function ModalSelectClientScreen({
 
   function renderItem({ item }: { item: Client }) {
     return (
-      <TouchableOpacity onPress={() => handlePress(item)}>
-        <Card stylesContainer={styles.cardContainer}>
+      <Card stylesContainer={styles.cardContainer}>
+        <RNView style={styles.cardTop}>
           <Text lightColor={Colors.light.text} darkColor={Colors.dark.text}>
             {item.firstName} {item.lastName}
           </Text>
@@ -114,8 +104,11 @@ export default function ModalSelectClientScreen({
               <BinIcon />
             </Icon>
           </RNView>
-        </Card>
-      </TouchableOpacity>
+        </RNView>
+        <RNView>
+          <ClientInfos />
+        </RNView>
+      </Card>
     );
   }
 
@@ -170,10 +163,13 @@ const styles = StyleSheet.create({
     paddingHorizontal: 12,
   },
   cardContainer: {
+    marginBottom: 16,
+    gap: 16,
+  },
+  cardTop: {
     flexDirection: "row",
     justifyContent: "space-between",
     alignItems: "center",
-    marginBottom: 16,
   },
   contentContainerStyle: {
     paddingTop: 20,
