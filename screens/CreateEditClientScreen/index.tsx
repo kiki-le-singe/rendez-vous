@@ -1,5 +1,12 @@
 import React from "react";
-import { ScrollView, StyleSheet, TextInput } from "react-native";
+import {
+  ScrollView,
+  StyleSheet,
+  Switch,
+  Text,
+  TextInput,
+  View as RNView,
+} from "react-native";
 
 import { View, useThemeColor } from "../../components/Themed";
 import Colors from "../../constants/Colors";
@@ -11,6 +18,7 @@ import Card from "../../components/Card";
 import GenderIcon from "../../assets/svg/js/GenderIcon";
 import BdayIcon from "../../assets/svg/js/Bday";
 import { TabMode } from "../../components/Tabs/types";
+import Button from "../../components/Button";
 
 export default function CreateEditClientScreen({
   route,
@@ -19,6 +27,15 @@ export default function CreateEditClientScreen({
   const { screenMode } = route.params;
   const [email, setEmail] = React.useState("");
   const [phone, setPhone] = React.useState("");
+  const [isSMSEnabled, setIsSMSEnabled] = React.useState(false);
+  const [isMarketingEnabled, setIsMarketingEnabled] = React.useState(false);
+
+  function toggleSMSSwitch() {
+    setIsSMSEnabled(!isSMSEnabled);
+  }
+  function toggleMarketingSwitch() {
+    setIsMarketingEnabled(!isMarketingEnabled);
+  }
 
   const backgroundColor = useThemeColor(
     { light: Colors.light.white, dark: Colors.dark.darkGreen },
@@ -35,10 +52,6 @@ export default function CreateEditClientScreen({
   const fontSize = email ? 13 : 12;
   const themeStyles = { backgroundColor, borderColor, color, fontSize };
 
-  function handlePress() {
-    navigation.navigate("RendezVous");
-  }
-
   React.useEffect(() => {
     console.log("screenMode", screenMode);
   }, []);
@@ -49,6 +62,10 @@ export default function CreateEditClientScreen({
       lightColor={Colors.light.background}
       darkColor={Colors.dark.background}
     >
+      <View style={styles.buttonContainer}>
+        <Button theme="green" label="Save" />
+      </View>
+
       <ScrollView contentContainerStyle={styles.contentContainerStyle}>
         <TextInput
           style={[styles.input, themeStyles]}
@@ -85,6 +102,28 @@ export default function CreateEditClientScreen({
             labels={[20, "Sept"]}
             mode={TabMode.BUTTON}
           />
+        </Card>
+        <Card stylesContainer={styles.switchContainer}>
+          <RNView style={styles.switchContent}>
+            <Switch
+              style={styles.switch}
+              trackColor={{ false: "red", true: Colors.light.green }}
+              thumbColor={Colors.light.white}
+              onValueChange={toggleSMSSwitch}
+              value={isSMSEnabled}
+            />
+            <Text style={styles.switchLabel}>SMS de rappel</Text>
+          </RNView>
+          <RNView style={styles.switchContent}>
+            <Switch
+              style={styles.switch}
+              trackColor={{ false: "#BFC5C3", true: Colors.light.green }}
+              thumbColor={Colors.light.white}
+              onValueChange={toggleMarketingSwitch}
+              value={isMarketingEnabled}
+            />
+            <Text style={styles.switchLabel}>SMS marketing</Text>
+          </RNView>
         </Card>
       </ScrollView>
     </View>
@@ -123,4 +162,22 @@ const styles = StyleSheet.create({
     height: "100%",
     paddingLeft: 12,
   },
+  buttonContainer: {
+    alignSelf: "flex-end",
+  },
+  switchContainer: {
+    flexDirection: "row",
+    gap: 16,
+  },
+  switchContent: {
+    flexDirection: "row",
+    justifyContent: "center",
+    alignItems: "center",
+    // gap: 4,
+  },
+  switchLabel: {
+    fontSize: 13,
+    color: Colors.light.darkGreen,
+  },
+  switch: { transform: [{ scaleX: 0.6 }, { scaleY: 0.6 }] },
 });

@@ -6,7 +6,7 @@ export type themeValues = "green" | "red" | "darkBlue" | "light";
 
 export type ButtonProps = {
   label: string;
-  theme: themeValues;
+  theme?: themeValues;
   onPress?: () => void;
   animatedStyle?: {};
 };
