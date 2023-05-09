@@ -1,11 +1,16 @@
 import React from "react";
-import { StyleSheet, TextInput } from "react-native";
+import { ScrollView, StyleSheet, TextInput } from "react-native";
 
 import { View, useThemeColor } from "../../components/Themed";
 import Colors from "../../constants/Colors";
 import { CreateEditClientScreenProps } from "../../routes/types";
 import DownArrowIcon from "../../assets/svg/js/DownArrowIcon";
 import FlagIcon from "../../assets/svg/js/FlagIcon";
+import Tabs from "../../components/Tabs";
+import Card from "../../components/Card";
+import GenderIcon from "../../assets/svg/js/GenderIcon";
+import BdayIcon from "../../assets/svg/js/Bday";
+import { TabMode } from "../../components/Tabs/types";
 
 export default function CreateEditClientScreen({
   route,
@@ -44,31 +49,44 @@ export default function CreateEditClientScreen({
       lightColor={Colors.light.background}
       darkColor={Colors.dark.background}
     >
-      <TextInput
-        style={[styles.input, themeStyles]}
-        onChangeText={setEmail}
-        value={email}
-        placeholder="Email"
-        placeholderTextColor={Colors.light.placeholder}
-        keyboardType="email-address"
-        autoCorrect={false}
-      />
-      <View>
-        <View style={styles.iconsContainer}>
-          <FlagIcon />
-          <DownArrowIcon />
-        </View>
-
+      <ScrollView contentContainerStyle={styles.contentContainerStyle}>
         <TextInput
-          style={[styles.input, themeStyles, styles.inputPhone]}
-          onChangeText={setPhone}
-          value={phone}
-          placeholder="Téléphone"
+          style={[styles.input, themeStyles]}
+          onChangeText={setEmail}
+          value={email}
+          placeholder="Email"
           placeholderTextColor={Colors.light.placeholder}
-          keyboardType="numeric"
+          keyboardType="email-address"
           autoCorrect={false}
         />
-      </View>
+        <View>
+          <View style={styles.iconsContainer}>
+            <FlagIcon />
+            <DownArrowIcon />
+          </View>
+
+          <TextInput
+            style={[styles.input, themeStyles, styles.inputPhone]}
+            onChangeText={setPhone}
+            value={phone}
+            placeholder="Téléphone"
+            placeholderTextColor={Colors.light.placeholder}
+            keyboardType="numeric"
+            autoCorrect={false}
+          />
+        </View>
+
+        <Card>
+          <Tabs icon={<GenderIcon />} labels={["Homme", "Femme", "Enfant"]} />
+        </Card>
+        <Card>
+          <Tabs
+            icon={<BdayIcon />}
+            labels={[20, "Sept"]}
+            mode={TabMode.BUTTON}
+          />
+        </Card>
+      </ScrollView>
     </View>
   );
 }
@@ -78,6 +96,9 @@ const styles = StyleSheet.create({
     flex: 1,
     paddingTop: 20,
     paddingHorizontal: 20,
+    gap: 16,
+  },
+  contentContainerStyle: {
     gap: 16,
   },
   input: {
