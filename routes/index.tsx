@@ -9,6 +9,7 @@ import Colors from "../constants/Colors";
 import HeaderLeft from "../components/HeaderLeft";
 import HeaderRight from "../components/HeaderRight";
 import ModalSelectClientScreen from "../screens/SelectClientScreen";
+import CreateEditClientScreen from "../screens/CreateEditClientScreen";
 
 const Stack = createNativeStackNavigator<RootStackParamList>();
 
@@ -24,16 +25,7 @@ function Routes(): JSX.Element {
 
   return (
     <Stack.Navigator>
-      <Stack.Group
-      // screenOptions={{
-      //   headerTintColor: colors.ORANGE,
-      //   headerTitleStyle: {color: colors.WHITE},
-      //   headerStyle: {
-      //     backgroundColor: colors.BLUE_DARK,
-      //   },
-      //   headerRight,
-      // }}
-      >
+      <Stack.Group>
         <Stack.Screen
           name="Home"
           component={HomeScreen}
@@ -55,28 +47,16 @@ function Routes(): JSX.Element {
             title: "Rendez-vous",
           }}
         />
-        {/* <Stack.Screen
-          name="Home"
-          options={{
-            title: 'Tell Me A Story...',
-            headerBackVisible: false,
-          }}
-          component={HomeScreen}
-        />
-        <Stack.Screen
-          name="WriteStory"
-          options={{
-            title: 'Write Your Own Story...',
-          }}
-          component={WriteStoryScreen}
-        /> */}
       </Stack.Group>
 
       <Stack.Group
         screenOptions={{ presentation: "modal", headerShown: false }}
       >
         <Stack.Screen name="SelectClient" component={ModalSelectClientScreen} />
-        {/* <Stack.Screen name="Settings" component={SettingsScreen} /> */}
+        <Stack.Screen
+          name="CreateEditClient"
+          component={CreateEditClientScreen}
+        />
       </Stack.Group>
     </Stack.Navigator>
   );
