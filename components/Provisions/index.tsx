@@ -6,6 +6,8 @@ import { ThemePickerSelect } from "../PickerSelect/types";
 import Tabs from "../Tabs";
 import { TabMode } from "../Tabs/types";
 import Colors from "../../constants/Colors";
+import Icon from "../Icon";
+import BinIcon from "../../assets/svg/js/BinIcon";
 
 export default function Provisions() {
   return (
@@ -47,6 +49,10 @@ export default function Provisions() {
             <Text>€</Text>
           </View>
         </View>
+
+        <Icon size={46}>
+          <BinIcon />
+        </Icon>
       </View>
     </View>
   );
