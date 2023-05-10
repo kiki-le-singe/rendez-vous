@@ -14,7 +14,11 @@ export default function ClientInfos() {
 
   return (
     <TouchableOpacity onPress={onPress} style={styles.container}>
-      {!isExpanded ? <UnderlineText icon={<InfosIcon />} /> : <InfosIcon />}
+      {!isExpanded ? (
+        <UnderlineText text="Info Client" icon={<InfosIcon />} />
+      ) : (
+        <InfosIcon />
+      )}
 
       {isExpanded && (
         <View style={styles.boxInfos}>

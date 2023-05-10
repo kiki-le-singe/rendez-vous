@@ -7,6 +7,7 @@ export default function UnderlineText({
   icon = null,
   onPress = () => {},
   disabled = true,
+  text,
 }: UnderlineTextProps) {
   function handlePress() {
     onPress();
@@ -19,7 +20,7 @@ export default function UnderlineText({
       style={styles.container}
     >
       {icon}
-      {<Text style={styles.text}>Info Client</Text>}
+      {<Text style={styles.text}>{text}</Text>}
     </TouchableOpacity>
   );
 }
