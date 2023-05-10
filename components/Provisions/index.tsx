@@ -1,10 +1,11 @@
 import React from "react";
-import { StyleSheet, View } from "react-native";
+import { StyleSheet, Text, View } from "react-native";
 
 import PickerSelect from "../../components/PickerSelect";
 import { ThemePickerSelect } from "../PickerSelect/types";
 import Tabs from "../Tabs";
 import { TabMode } from "../Tabs/types";
+import Colors from "../../constants/Colors";
 
 export default function Provisions() {
   return (
@@ -27,6 +28,26 @@ export default function Provisions() {
         selectLabel="Avec"
         placeholder="Choisir un collaborateur"
       />
+
+      <View style={styles.tabsContainer}>
+        <View style={styles.tabs}>
+          <View style={[styles.tab, styles.tabLeft]}>
+            <Text>60</Text>
+          </View>
+          <View style={[styles.tab, styles.tabRight]}>
+            <Text>Min</Text>
+          </View>
+        </View>
+
+        <View style={styles.tabs}>
+          <View style={[styles.tab, styles.tabLeft]}>
+            <Text>60</Text>
+          </View>
+          <View style={[styles.tab, styles.tabRight]}>
+            <Text>€</Text>
+          </View>
+        </View>
+      </View>
     </View>
   );
 }
@@ -34,5 +55,39 @@ export default function Provisions() {
 const styles = StyleSheet.create({
   container: {
     gap: 16,
+  },
+  tabsContainer: {
+    flexDirection: "row",
+    justifyContent: "center",
+    alignItems: "center",
+    gap: 16,
+  },
+  tabs: {
+    flexDirection: "row",
+    height: 48,
+  },
+  tab: {
+    height: "100%",
+    justifyContent: "center",
+    alignItems: "center",
+    borderWidth: 1,
+    borderColor: Colors.light.border,
+  },
+  tabLeft: {
+    width: 71,
+    borderTopLeftRadius: 5,
+    borderBottomLeftRadius: 5,
+  },
+  tabRight: {
+    width: 48,
+    borderTopRightRadius: 5,
+    borderBottomRightRadius: 5,
+    backgroundColor: Colors.light.darkWhite,
+    borderLeftWidth: 0,
+  },
+  label: {
+    width: 80,
+    textAlign: "center",
+    color: Colors.light.placeholder,
   },
 });
