@@ -4,6 +4,6 @@ export enum TabMode {
 }
 export type TabsProps = {
   labels: (string | number)[];
-  icon: JSX.Element | null;
+  icon?: JSX.Element | null;
   mode?: TabMode;
 };
