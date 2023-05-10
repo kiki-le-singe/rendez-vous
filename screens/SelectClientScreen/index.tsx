@@ -171,7 +171,7 @@ export default function ModalSelectClientScreen({
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    paddingVertical: 20,
+    paddingTop: 20,
   },
   inputContainer: {
     paddingBottom: 16,
@@ -190,7 +190,7 @@ const styles = StyleSheet.create({
     alignItems: "center",
   },
   contentContainerStyle: {
-    paddingTop: 20,
+    paddingVertical: 20,
     paddingHorizontal: 12,
   },
   actionsContainer: {
