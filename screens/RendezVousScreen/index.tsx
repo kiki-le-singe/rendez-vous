@@ -8,6 +8,7 @@ import PenIcon from "../../assets/svg/js/PenIcon";
 import BottomActions from "../../components/BottomActions";
 import ActionsLinks from "../../components/ActionsLinks";
 import Divider from "../../components/Divider";
+import Calendar from "../../components/Calendar";
 
 export default function RendezVousScreen() {
   return (
@@ -17,6 +18,10 @@ export default function RendezVousScreen() {
     >
       <Card>
         <ClientInput editable={false} />
+      </Card>
+
+      <Card>
+        <Calendar />
       </Card>
 
       <ActionsLinks>
@@ -39,5 +44,6 @@ const styles = StyleSheet.create({
   },
   contentContainerStyle: {
     gap: 16,
+    paddingBottom: 60,
   },
 });
