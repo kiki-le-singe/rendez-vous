@@ -3,8 +3,6 @@ import { StyleSheet, Text, View } from "react-native";
 
 import PickerSelect from "../../components/PickerSelect";
 import { ThemePickerSelect } from "../PickerSelect/types";
-import Tabs from "../Tabs";
-import { TabMode } from "../Tabs/types";
 import Colors from "../../constants/Colors";
 import Icon from "../Icon";
 import BinIcon from "../../assets/svg/js/BinIcon";
