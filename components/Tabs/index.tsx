@@ -9,6 +9,7 @@ export default function Tabs({
   labels = [],
   icon = null,
   mode = TabMode.TAB,
+  labelStyles = {},
 }: TabsProps) {
   const [selectedIndex, setSelectedIndex] = React.useState(0);
 
@@ -42,6 +43,7 @@ export default function Tabs({
           onPress={handlePress}
           isSelected={selectedIndex === index}
           mode={mode}
+          labelStyles={labelStyles}
         />
       );
     });

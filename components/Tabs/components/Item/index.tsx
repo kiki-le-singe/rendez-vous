@@ -7,6 +7,7 @@ import { TabMode } from "../../types";
 
 export default function Item({
   stylesContainer = {},
+  labelStyles = {},
   label = "",
   index = 0,
   isSelected = false,
@@ -34,6 +35,7 @@ export default function Item({
           styles.label,
           isSelected && styles.selectedLabel,
           !isTabMode && styles.selectedLabel,
+          labelStyles,
         ]}
       >
         {label}

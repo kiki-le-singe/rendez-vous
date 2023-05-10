@@ -2,7 +2,8 @@ import { TabMode } from "../../types";
 
 export type ItemProps = {
   label: string | number;
-  stylesContainer: {};
+  stylesContainer?: {};
+  labelStyles?: {};
   index: number;
   isSelected: boolean;
   onPress?: (selectedIndex: number) => void;

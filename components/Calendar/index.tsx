@@ -1,19 +1,10 @@
 import React from "react";
-import {
-  StyleSheet,
-  Text,
-  TextInput,
-  TouchableOpacity,
-  View,
-} from "react-native";
-import { useNavigation } from "@react-navigation/native";
-import { NativeStackNavigationProp } from "@react-navigation/native-stack";
+import { StyleSheet, Text, TextInput, View } from "react-native";
 
 import Colors from "../../constants/Colors";
 import { CalendarProps } from "./types";
 import CalendarIcon from "../../assets/svg/js/CalendarIcon";
 import InputContainer from "../InputContainer";
-import { RootStackParamList } from "../../routes/types";
 import Tabs from "../Tabs";
 import { TabMode } from "../Tabs/types";
 import CheckBox from "../Checkbox";
@@ -41,15 +32,23 @@ export default function Calendar({
 
   function renderStartEndPlanning() {
     return isChecked ? null : (
-      <>
+      <View style={styles.endAndStartPlanning}>
         <Text style={styles.text}>de</Text>
 
-        <Tabs mode={TabMode.BUTTON} labels={[14, 30]} />
+        <Tabs
+          mode={TabMode.BUTTON}
+          labels={[14, 30]}
+          labelStyles={styles.label}
+        />
 
         <Text style={styles.text}>à</Text>
 
-        <Tabs mode={TabMode.BUTTON} labels={[15, 30]} />
-      </>
+        <Tabs
+          mode={TabMode.BUTTON}
+          labels={[15, 30]}
+          labelStyles={styles.label}
+        />
+      </View>
     );
   }
 
@@ -69,7 +68,7 @@ export default function Calendar({
         />
       </InputContainer>
 
-      <View style={styles.planning}>
+      <View style={styles.planningContainer}>
         {renderStartEndPlanning()}
 
         <View style={styles.timeContainer}>
@@ -122,9 +121,17 @@ const styles = StyleSheet.create({
     color: Colors.light.darkGreen,
     fontWeight: "600",
   },
-  planning: {
+  planningContainer: {
     gap: 16,
     alignItems: "center",
     marginBottom: 10,
+  },
+  endAndStartPlanning: {
+    flexDirection: "row",
+    alignItems: "center",
+    gap: 16,
+  },
+  label: {
+    width: 30,
   },
 });
