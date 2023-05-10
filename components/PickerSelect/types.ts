@@ -1,8 +1,15 @@
+export type PickerSelectStyles = {
+  [key: string]: object;
+};
+
+export enum ThemePickerSelect {
+  BLUE = "blue",
+  GREEN = "green",
+}
+
 export type PickerSelectProps = {
-  onPress: (values: string[], selectName: string) => void;
   placeholder: string;
-  selectTitle: string;
+  selectLabel: string;
   values: string[];
-  selectName: string;
-  value: string | null;
+  theme?: ThemePickerSelect;
 };
