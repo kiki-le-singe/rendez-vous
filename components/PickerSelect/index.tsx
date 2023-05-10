@@ -20,6 +20,8 @@ export default function PickerSelect({
   selectLabel,
   values = [],
   theme = ThemePickerSelect.BLUE,
+  isReset = false,
+  handleResetPickerSelect,
 }: PickerSelectProps) {
   const [isOpen, setIsOpen] = React.useState(false);
   const [item, setItem] = React.useState("");
@@ -31,6 +33,7 @@ export default function PickerSelect({
   function handleClosePress(item: string) {
     setItem(item);
     setIsOpen(false);
+    handleResetPickerSelect(false);
   }
 
   function renderItem(item: string, index: number) {
@@ -44,6 +47,12 @@ export default function PickerSelect({
       </Text>
     );
   }
+
+  React.useEffect(() => {
+    if (item && isReset) {
+      handleClosePress("");
+    }
+  }, [item, isReset]);
 
   return (
     <>

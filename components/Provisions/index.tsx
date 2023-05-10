@@ -10,6 +10,12 @@ import Icon from "../Icon";
 import BinIcon from "../../assets/svg/js/BinIcon";
 
 export default function Provisions() {
+  const [isReset, setIsReset] = React.useState(false);
+
+  function handleResetPickerSelect(isReset: boolean) {
+    setIsReset(isReset);
+  }
+
   return (
     <View style={styles.container}>
       <PickerSelect
@@ -24,11 +30,15 @@ export default function Provisions() {
         selectLabel="Prestation"
         placeholder="Choisir une prestation"
         theme={ThemePickerSelect.GREEN}
+        isReset={isReset}
+        handleResetPickerSelect={handleResetPickerSelect}
       />
       <PickerSelect
         values={["Ponnappa", "John", "Hayman", "Salome", "Daly", "Natalie"]}
         selectLabel="Avec"
         placeholder="Choisir un collaborateur"
+        isReset={isReset}
+        handleResetPickerSelect={handleResetPickerSelect}
       />
 
       <View style={styles.tabsContainer}>
@@ -50,7 +60,7 @@ export default function Provisions() {
           </View>
         </View>
 
-        <Icon size={46}>
+        <Icon size={46} onPress={() => handleResetPickerSelect(true)}>
           <BinIcon />
         </Icon>
       </View>

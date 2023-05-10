@@ -12,4 +12,6 @@ export type PickerSelectProps = {
   selectLabel: string;
   values: string[];
   theme?: ThemePickerSelect;
+  isReset?: boolean;
+  handleResetPickerSelect: (isReset: boolean) => void;
 };
