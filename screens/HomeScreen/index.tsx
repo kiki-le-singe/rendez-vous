@@ -1,4 +1,5 @@
-import { StyleSheet } from "react-native";
+import { Platform, StyleSheet } from "react-native";
+import { StatusBar } from "expo-status-bar";
 
 import { Text, View } from "../../components/Themed";
 import Colors from "../../constants/Colors";
@@ -23,6 +24,9 @@ export default function HomeScreen({ navigation }: HomeScreenProps) {
       >
         Prise de Rendez-vous
       </Text>
+
+      {/* Use a light status bar on iOS to account for the black space above the modal */}
+      <StatusBar style={Platform.OS === "ios" ? "dark" : "auto"} />
     </View>
   );
 }
