@@ -22,6 +22,9 @@ import { ScreenClientMode } from "../CreateEditClientScreen/types";
 import BinIcon from "../../assets/svg/js/BinIcon";
 import Icon from "../../components/Icon";
 import ClientInfos from "../../components/ClientInfos";
+import UnderlineText from "../../components/UnderlineText";
+import CopyIcon from "../../assets/svg/js/CopyIcon";
+import CardIcon from "../../assets/svg/js/CardIcon";
 
 export default function ModalSelectClientScreen({
   navigation,
@@ -105,8 +108,19 @@ export default function ModalSelectClientScreen({
             </Icon>
           </RNView>
         </RNView>
-        <RNView>
-          <ClientInfos />
+
+        <ClientInfos />
+
+        <RNView style={styles.infos}>
+          <UnderlineText text="Carte de fidélité" icon={<CardIcon />} />
+          <Text>: Points : 42 - Gains : 10,00€ (+)</Text>
+        </RNView>
+        <RNView style={styles.infos}>
+          <UnderlineText
+            text="Forfait brushing par 5 - cheveux courts"
+            icon={<CopyIcon />}
+          />
+          <Text>(4)</Text>
         </RNView>
       </Card>
     );
@@ -186,5 +200,13 @@ const styles = StyleSheet.create({
   },
   inputCreateMode: {
     borderColor: Colors.light.green,
+  },
+  infos: {
+    color: Colors.light.lightGreen,
+    flexDirection: "row",
+    fontSize: 13,
+    fontWeight: "400",
+    fontStyle: "normal",
+    gap: 4,
   },
 });

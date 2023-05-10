@@ -1,4 +1,5 @@
 const darkGreen = "#34423E";
+const lightGreen = "#5F706A";
 const green = "#48BB78";
 const white = "#FFFFFF";
 const grey = "#CDCDCD";
@@ -26,6 +27,7 @@ export default {
     darkGrey,
     placeholder,
     lightGrey,
+    lightGreen,
   },
   dark: {
     text: grey,
@@ -41,5 +43,6 @@ export default {
     darkGrey,
     placeholder,
     lightGrey,
+    lightGreen,
   },
 };
