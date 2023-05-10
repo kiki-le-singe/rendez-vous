@@ -133,7 +133,11 @@ export default function ModalSelectClientScreen({
     <View style={styles.container}>
       <View style={[styles.inputContainer, { borderColor }]}>
         <View style={styles.inputContent}>
-          <ClientInput onChangeText={handleChangeText} {...buttonProps} />
+          <ClientInput
+            onChangeText={handleChangeText}
+            {...buttonProps}
+            textInputStyles={isCreateMode && styles.inputCreateMode}
+          />
         </View>
       </View>
 
@@ -179,5 +183,8 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     alignItems: "center",
     gap: 10,
+  },
+  inputCreateMode: {
+    borderColor: Colors.light.green,
   },
 });

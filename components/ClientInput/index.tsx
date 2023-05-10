@@ -14,6 +14,7 @@ export default function ClientInput({
   editable = true,
   onChangeText,
   rightElement = null,
+  textInputStyles = {},
 }: ClientInputProps) {
   const [_text, _onChangeText] = React.useState("");
   const navigation =
@@ -50,6 +51,7 @@ export default function ClientInput({
           style={[
             styles.input,
             { backgroundColor, borderColor, color, fontSize },
+            textInputStyles,
           ]}
           onChangeText={handleChangeText}
           value={_text}
