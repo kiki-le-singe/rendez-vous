@@ -2,6 +2,7 @@ import React from "react";
 import { StyleSheet, Text, TouchableOpacity } from "react-native";
 
 import { UnderlineTextProps } from "./types";
+import Colors from "../../constants/Colors";
 
 export default function UnderlineText({
   icon = null,
@@ -32,7 +33,9 @@ const styles = StyleSheet.create({
     gap: 6,
   },
   text: {
+    fontWeight: "600",
     fontSize: 13,
     textDecorationLine: "underline",
+    color: Colors.light.darkGreen,
   },
 });
