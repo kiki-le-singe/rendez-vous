@@ -107,6 +107,7 @@ const styles = StyleSheet.create({
     borderWidth: 1,
     borderRadius: 6,
     padding: 10,
+    borderColor: Colors.light.border,
   },
   text: {
     color: Colors.light.lightGreen,
