@@ -1,67 +1,35 @@
 import React from "react";
 import { StyleSheet, Text, View } from "react-native";
 
-import PickerSelect from "../../components/PickerSelect";
-import { ThemePickerSelect } from "../PickerSelect/types";
 import Colors from "../../constants/Colors";
-import Icon from "../Icon";
-import BinIcon from "../../assets/svg/js/BinIcon";
+import ProvisionsContainer from "../ProvisionsContainer";
 
 export default function Provisions() {
-  const [isReset, setIsReset] = React.useState(false);
+  const [provisions, setProvisions] = React.useState([0]);
 
-  function handleResetPickerSelect(isReset: boolean) {
-    setIsReset(isReset);
+  const provisionsLength = provisions.length;
+
+  function handleAddProvision() {
+    setProvisions([...provisions, provisionsLength]);
+  }
+
+  React.useEffect(() => {
+    console.log("provisions", provisions);
+  }, [provisions]);
+
+  function renderProvisions() {
+    return provisions.map((provision) => (
+      <ProvisionsContainer key={`ProvisionsContainer_${provision}`} />
+    ));
   }
 
   return (
-    <View style={styles.container}>
-      <PickerSelect
-        values={[
-          "Coupe homme (cheveux courts)",
-          "Coloration",
-          "Coupe barbe",
-          "Coupe femme (cheveux courts)",
-          "Shampoing",
-          "Massage",
-        ]}
-        selectLabel="Prestation"
-        placeholder="Choisir une prestation"
-        theme={ThemePickerSelect.GREEN}
-        isReset={isReset}
-        handleResetPickerSelect={handleResetPickerSelect}
-      />
-      <PickerSelect
-        values={["Ponnappa", "John", "Hayman", "Salome", "Daly", "Natalie"]}
-        selectLabel="Avec"
-        placeholder="Choisir un collaborateur"
-        isReset={isReset}
-        handleResetPickerSelect={handleResetPickerSelect}
-      />
+    <View>
+      {renderProvisions()}
 
-      <View style={styles.tabsContainer}>
-        <View style={styles.tabs}>
-          <View style={[styles.tab, styles.tabLeft]}>
-            <Text>60</Text>
-          </View>
-          <View style={[styles.tab, styles.tabRight]}>
-            <Text>Min</Text>
-          </View>
-        </View>
-
-        <View style={styles.tabs}>
-          <View style={[styles.tab, styles.tabLeft]}>
-            <Text>60</Text>
-          </View>
-          <View style={[styles.tab, styles.tabRight]}>
-            <Text>€</Text>
-          </View>
-        </View>
-
-        <Icon size={46} onPress={() => handleResetPickerSelect(true)}>
-          <BinIcon />
-        </Icon>
-      </View>
+      <Text onPress={handleAddProvision} style={styles.addProvision}>
+        + Ajouter une prestation à la suite
+      </Text>
     </View>
   );
 }
