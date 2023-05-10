@@ -7,6 +7,7 @@ import PaperIcon from "../../assets/svg/js/PaperIcon";
 import PenIcon from "../../assets/svg/js/PenIcon";
 import BottomActions from "../../components/BottomActions";
 import ActionsLinks from "../../components/ActionsLinks";
+import Divider from "../../components/Divider";
 
 export default function RendezVousScreen() {
   return (
@@ -22,6 +23,8 @@ export default function RendezVousScreen() {
         <UnderlineText text="Ajouter un titre" icon={<PaperIcon />} />
         <UnderlineText text="Ajouter une note" icon={<PenIcon />} />
       </ActionsLinks>
+
+      <Divider />
 
       <BottomActions />
     </ScrollView>

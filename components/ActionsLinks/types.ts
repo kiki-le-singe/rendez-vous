@@ -1,1 +1,3 @@
-export type ActionsLinksProps = React.PropsWithChildren<{}>;
+export type ActionsLinksProps = React.PropsWithChildren<{
+  containerStyles?: object;
+}>;

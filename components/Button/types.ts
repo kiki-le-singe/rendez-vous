@@ -9,4 +9,5 @@ export type ButtonProps = {
   theme?: themeValues;
   onPress?: () => void;
   animatedStyle?: {};
+  stylesContainer?: {};
 };

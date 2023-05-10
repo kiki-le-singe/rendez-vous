@@ -9,13 +9,21 @@ export default function Button({
   label,
   theme = "light",
   onPress = () => {},
+  stylesContainer = {},
   animatedStyle = {},
 }: ButtonProps) {
   const labelTheme = theme === "light" ? "lightLabel" : "label";
 
   return (
     <TouchableOpacity onPress={onPress}>
-      <Animated.View style={[styles.container, styles[theme], animatedStyle]}>
+      <Animated.View
+        style={[
+          styles.container,
+          styles[theme],
+          stylesContainer,
+          animatedStyle,
+        ]}
+      >
         <Text style={styles[labelTheme]}>{label}</Text>
       </Animated.View>
     </TouchableOpacity>
@@ -26,6 +34,8 @@ const styles: TStyles = StyleSheet.create({
   container: {
     padding: 10,
     borderRadius: 6,
+    justifyContent: "center",
+    alignItems: "center",
   },
   green: {
     backgroundColor: Colors.light.green,
