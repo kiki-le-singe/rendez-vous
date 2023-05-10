@@ -17,6 +17,8 @@ import { RootStackParamList } from "../../routes/types";
 import Tabs from "../Tabs";
 import { TabMode } from "../Tabs/types";
 import CheckBox from "../Checkbox";
+import UnderlineText from "../UnderlineText";
+import RepeatIcon from "../../assets/svg/js/RepeatIcon";
 
 export default function Calendar({
   editable = true,
@@ -81,6 +83,13 @@ export default function Calendar({
           />
         </View>
       </View>
+
+      <UnderlineText
+        disabled={false}
+        icon={<RepeatIcon />}
+        text="Répéter"
+        textColor={Colors.light.green}
+      />
     </View>
   );
 }
@@ -88,6 +97,7 @@ export default function Calendar({
 const styles = StyleSheet.create({
   container: {
     gap: 16,
+    alignItems: "center",
   },
   input: {
     flex: 1,
@@ -114,5 +124,6 @@ const styles = StyleSheet.create({
   planning: {
     gap: 16,
     alignItems: "center",
+    marginBottom: 10,
   },
 });
