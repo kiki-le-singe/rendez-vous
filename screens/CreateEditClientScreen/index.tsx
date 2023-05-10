@@ -36,6 +36,9 @@ export default function CreateEditClientScreen({
   function toggleMarketingSwitch() {
     setIsMarketingEnabled(!isMarketingEnabled);
   }
+  function handleSaveClient() {
+    navigation.pop(2);
+  }
 
   const backgroundColor = useThemeColor(
     { light: Colors.light.white, dark: Colors.dark.darkGreen },
@@ -63,7 +66,7 @@ export default function CreateEditClientScreen({
       darkColor={Colors.dark.background}
     >
       <View style={styles.buttonContainer}>
-        <Button theme="green" label="Save" />
+        <Button theme="green" label="Save" onPress={handleSaveClient} />
       </View>
 
       <ScrollView contentContainerStyle={styles.contentContainerStyle}>
