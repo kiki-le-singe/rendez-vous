@@ -3,4 +3,5 @@ export type UnderlineTextProps = {
   onPress?: () => void;
   disabled?: boolean;
   text: string;
+  textColor?: string;
 };

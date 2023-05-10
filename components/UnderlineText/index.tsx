@@ -9,6 +9,7 @@ export default function UnderlineText({
   onPress = () => {},
   disabled = true,
   text,
+  textColor = Colors.light.darkGreen,
 }: UnderlineTextProps) {
   function handlePress() {
     onPress();
@@ -21,7 +22,7 @@ export default function UnderlineText({
       style={styles.container}
     >
       {icon}
-      {<Text style={styles.text}>{text}</Text>}
+      {<Text style={[styles.text, { color: textColor }]}>{text}</Text>}
     </TouchableOpacity>
   );
 }
@@ -36,6 +37,5 @@ const styles = StyleSheet.create({
     fontWeight: "600",
     fontSize: 13,
     textDecorationLine: "underline",
-    color: Colors.light.darkGreen,
   },
 });
