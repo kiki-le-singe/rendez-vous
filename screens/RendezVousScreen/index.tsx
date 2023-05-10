@@ -1,12 +1,12 @@
-import { StyleSheet, View as RNView, ScrollView } from "react-native";
+import { StyleSheet, ScrollView } from "react-native";
 
-import { View } from "../../components/Themed";
 import Card from "../../components/Card";
 import ClientInput from "../../components/ClientInput";
-import Colors from "../../constants/Colors";
 import UnderlineText from "../../components/UnderlineText";
 import PaperIcon from "../../assets/svg/js/PaperIcon";
 import PenIcon from "../../assets/svg/js/PenIcon";
+import BottomActions from "../../components/BottomActions";
+import ActionsLinks from "../../components/ActionsLinks";
 
 export default function RendezVousScreen() {
   return (
@@ -18,10 +18,12 @@ export default function RendezVousScreen() {
         <ClientInput editable={false} />
       </Card>
 
-      <RNView style={styles.actionsLink}>
+      <ActionsLinks>
         <UnderlineText text="Ajouter un titre" icon={<PaperIcon />} />
         <UnderlineText text="Ajouter une note" icon={<PenIcon />} />
-      </RNView>
+      </ActionsLinks>
+
+      <BottomActions />
     </ScrollView>
   );
 }
@@ -34,9 +36,5 @@ const styles = StyleSheet.create({
   },
   contentContainerStyle: {
     gap: 16,
-  },
-  actionsLink: {
-    flexDirection: "row",
-    gap: 18,
   },
 });
