@@ -26,9 +26,7 @@ export default function RendezVousScreen() {
         <Calendar />
       </Card>
 
-      <Card>
-        <Provisions />
-      </Card>
+      <Provisions />
 
       <ActionsLinks>
         <UnderlineText text="Ajouter un titre" icon={<PaperIcon />} />

@@ -1,75 +1,75 @@
 import React from "react";
-import { StyleSheet, Text, View } from "react-native";
+import { StyleSheet, Text, View, TouchableOpacity } from "react-native";
 
 import Colors from "../../constants/Colors";
 import ProvisionsContainer from "../ProvisionsContainer";
+import Card from "../Card";
+import PlusIcon from "../../assets/svg/js/PlusIcon";
 
-export default function Provisions() {
-  const [provisions, setProvisions] = React.useState([0]);
+const Provisions = () => {
+  const [provisions, setProvisions] = React.useState([Date.now()]);
 
   const provisionsLength = provisions.length;
 
   function handleAddProvision() {
-    setProvisions([...provisions, provisionsLength]);
+    setProvisions([...provisions, Date.now()]);
   }
 
-  React.useEffect(() => {
-    console.log("provisions", provisions);
-  }, [provisions]);
+  function removeProvision(indexToRemove: number) {
+    if (provisionsLength > 1) {
+      const newArray = [...provisions];
+      newArray.splice(indexToRemove, 1);
+      setProvisions(newArray);
+    }
+  }
 
   function renderProvisions() {
-    return provisions.map((provision) => (
-      <ProvisionsContainer key={`ProvisionsContainer_${provision}`} />
+    return provisions.map((provision, index) => (
+      <Card>
+        <ProvisionsContainer
+          key={`ProvisionsContainer_${provision}`}
+          index={index}
+          provisionsLength={provisionsLength}
+          removeProvision={removeProvision}
+        />
+      </Card>
     ));
   }
 
   return (
-    <View>
+    <View style={styles.container}>
       {renderProvisions()}
 
-      <Text onPress={handleAddProvision} style={styles.addProvision}>
-        + Ajouter une prestation à la suite
-      </Text>
+      <TouchableOpacity
+        onPress={handleAddProvision}
+        style={styles.addProvisionContainer}
+      >
+        <PlusIcon />
+        <Text style={styles.addText}>Ajouter une prestation à la suite</Text>
+      </TouchableOpacity>
     </View>
   );
-}
+};
 
 const styles = StyleSheet.create({
   container: {
     gap: 16,
   },
-  tabsContainer: {
+  addProvisionContainer: {
+    gap: 10,
     flexDirection: "row",
-    justifyContent: "center",
-    alignItems: "center",
-    gap: 16,
-  },
-  tabs: {
-    flexDirection: "row",
-    height: 48,
-  },
-  tab: {
-    height: "100%",
-    justifyContent: "center",
-    alignItems: "center",
     borderWidth: 1,
-    borderColor: Colors.light.border,
+    borderRadius: 8,
+    justifyContent: "center",
+    alignItems: "center",
+    paddingVertical: 18,
+    borderStyle: "dashed",
   },
-  tabLeft: {
-    width: 71,
-    borderTopLeftRadius: 5,
-    borderBottomLeftRadius: 5,
-  },
-  tabRight: {
-    width: 48,
-    borderTopRightRadius: 5,
-    borderBottomRightRadius: 5,
-    backgroundColor: Colors.light.darkWhite,
-    borderLeftWidth: 0,
-  },
-  label: {
-    width: 80,
-    textAlign: "center",
-    color: Colors.light.placeholder,
+  addText: {
+    color: Colors.light.lightGreen,
+    fontSize: 13,
+    fontWeight: "600",
   },
 });
+
+export default React.memo(Provisions);
