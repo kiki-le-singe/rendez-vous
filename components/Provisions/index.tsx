@@ -25,9 +25,8 @@ const Provisions = () => {
 
   function renderProvisions() {
     return provisions.map((provision, index) => (
-      <Card>
+      <Card key={`ProvisionsContainer_${provision}`}>
         <ProvisionsContainer
-          key={`ProvisionsContainer_${provision}`}
           index={index}
           provisionsLength={provisionsLength}
           removeProvision={removeProvision}
